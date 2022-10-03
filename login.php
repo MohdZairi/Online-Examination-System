@@ -18,8 +18,9 @@ include_once 'dbConnection.php';
         if($count == 1)
         {
             $row = mysqli_fetch_array($result);
-            $_SESSION['name']=$name;
-            $_SESSION['email']=$emal;
+            $_SESSION["name"]=$row['name'];
+            $_SESSION["email"]=$row['email'];
+            $_SESSION["login"]= true;
 
             if($row['privilege']=='user')
             {
@@ -27,7 +28,9 @@ include_once 'dbConnection.php';
             }
             else
             {
+                
                 header("location:dash.php");
+                exit();
             }
 
         }
