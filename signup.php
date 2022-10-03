@@ -23,7 +23,6 @@ include_once 'dbConnection.php';
         else
         {
             $result2 = mysqli_query($con,"INSERT INTO user(name,gender,college,email,phone,password) VALUES('$name','$gender','$college','$email','$phone','$password')");
-
             if($result2)
             {
                 header("Location: index.php");
