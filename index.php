@@ -22,6 +22,7 @@
 <a href="#" class="pull-right btn sub1" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
     <span class="title1"><b>Login</b></span></a></div>
+
 <!-- script for login start -->
 <script>
         function validate() {
@@ -52,12 +53,85 @@
 
             return true;
         }
-    </script>
+</script>
 <!-- script for login end -->
 
 <!-- script for register start-->
 <script>
+        function regvalidate() {
+            var name =
+                document.forms.RegForm.name.value;
+            var gender =
+                document.forms.RegForm.gender.value;
+            var college =
+                document.forms.RegForm.college.value;
+            var email =
+                document.forms.RegForm.email.value;
+            var phone =
+                document.forms.RegForm.phone.value;
+            var password =
+                document.forms.RegForm.password.value;
+            var confirmpassword =
+                document.forms.RegForm.cpassword.value;
+            var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; //Javascript reGex for Email Validation.
+            var regPhone=/^\d{10}$/;									 // Javascript reGex for Phone Number validation.
+            var regName = /\d+$/g;								 // Javascript reGex for Name validation
 
+            if (name == "" || regName.test(name)) {
+                 error = " You Have To Write Your FullName Properly. ";
+                  document.getElementById( "error_reg" ).innerHTML = error;
+                  return false;
+            }
+            if (gender == "") {
+                error = " Please choose your gender. ";
+                  document.getElementById( "error_reg" ).innerHTML = error;
+                  return false;
+            }
+
+            if (college == "" || regName.test(college)) {
+                 error = " You Have To Write Your Proper College Name. ";
+                  document.getElementById( "error_reg" ).innerHTML = error;
+                  return false;
+            }
+
+            if (email == "" || !regEmail.test(email)) {
+                 error = " Please enter a valid e-mail address. ";
+                  document.getElementById( "error_reg" ).innerHTML = error;
+                  return false;
+            }
+
+            if (phone == "" || !regPhone.test(phone)) {
+                 error = " Please enter valid phone number.";
+                  document.getElementById( "error_reg" ).innerHTML = error;
+                  return false;
+            }
+            
+           
+            if (password == "") {
+                error = " Please enter your password. ";
+                  document.getElementById( "error_reg" ).innerHTML = error;
+                  return false;
+            }
+            if(password.length <6){
+                error = " Password should be atleast 6 character long. ";
+                  document.getElementById( "error_reg" ).innerHTML = error;
+                  return false;
+            }
+            if (confirmpassword == "") {
+                error = " Please enter your confirm password. ";
+                  document.getElementById( "error_reg" ).innerHTML = error;
+                  return false;
+            }
+            if(password != confirmpassword){
+                error = " Password doesn't match. ";
+                  document.getElementById( "error_reg" ).innerHTML = error;
+                  return false;
+            }
+
+            
+            
+            return true;
+        }
 </script>
 <!-- script for register end -->
 <!--sign in modal start-->
@@ -107,14 +181,16 @@
     <div class="row">
         <div class="col-md-7"></div>
             <div class="col-md-4 panel">
-                <form class="form-horizontal" name="regform" action="sign.php" onSubmit="return validateregister()" method="POST">
+                <form class="form-horizontal" name="RegForm"  onsubmit="return regvalidate()" method="POST">
                     <fieldset>
-
+                        <div class ="form-group">
+                            <p style="color:red;" id="error_reg" ></p>
+                        </div>
                         <!-- Text name-->
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="name"></label>  
                                 <div class="col-md-12">
-                                    <input id="name" name="name" placeholder="Enter your name" class="form-control input-md" type="text">  
+                                    <input name="name" placeholder="Enter your name" class="form-control input-md" type="text">  
                                 </div>
                         </div>
 
@@ -122,7 +198,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="gender"></label>
                                 <div class="col-md-12">
-                                    <select id="gender" name="gender" placeholder="Enter your gender" class="form-control input-md" >
+                                    <select name="gender" placeholder="Enter your gender" class="form-control input-md" >
                                     <option value="Male">Select Gender</option>
                                     <option value="M">Male</option>
                                     <option value="F">Female</option> </select>
@@ -133,7 +209,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="name"></label>  
                                 <div class="col-md-12">
-                                    <input id="college" name="college" placeholder="Enter your college name" class="form-control input-md" type="text">               
+                                    <input name="college" placeholder="Enter your college name" class="form-control input-md" type="text">               
                                 </div>
                         </div>
 
@@ -142,7 +218,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label title1" for="email"></label>
                                 <div class="col-md-12">
-                                    <input id="email" name="email" placeholder="Enter your email" class="form-control input-md" type="email">               
+                                    <input name="email" placeholder="Enter your email" class="form-control input-md" type="email">               
                                 </div>
                         </div>
 
@@ -150,7 +226,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="mob"></label>  
                                 <div class="col-md-12">
-                                    <input id="phone" name="phone" placeholder="Enter your mobile number" class="form-control input-md" type="number">               
+                                    <input name="phone" placeholder="Enter your mobile number" class="form-control input-md" type="number">               
                                 </div>
                         </div>
 
@@ -159,7 +235,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="password"></label>
                                 <div class="col-md-12">
-                                    <input id="password" name="password" placeholder="Enter your password" class="form-control input-md" type="password">              
+                                    <input name="password" placeholder="Enter your password" class="form-control input-md" type="password">              
                                 </div>
                         </div>
 
@@ -167,14 +243,15 @@
                         <div class="form-group">
                             <label class="col-md-12control-label" for="cpassword"></label>
                                 <div class="col-md-12">
-                                    <input id="cpassword" name="cpassword" placeholder="Conform Password" class="form-control input-md" type="password">                
+                                    <input name="cpassword" placeholder="Confirm Password" class="form-control input-md" type="password">                
                                 </div>
                         </div>
                         <!-- Button -->
                         <div class="form-group">
                             <label class="col-md-12 control-label" for=""></label>
                                 <div class="col-md-12"> 
-                                    <input  type="submit" class="sub" value="Sign up" class="btn btn-primary"/>
+                                    <input type="submit" class="sub" name="register_form"
+                                                value="Sign Up"  />
                                 </div>
                         </div>
 
