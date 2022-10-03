@@ -181,9 +181,13 @@
     <div class="row">
         <div class="col-md-7"></div>
             <div class="col-md-4 panel">
-                <form class="form-horizontal" name="RegForm"  onsubmit="return regvalidate()" method="POST">
+                <form class="form-horizontal" name="RegForm" action="signup.php"  onsubmit="return regvalidate()" method="POST">
                     <fieldset>
                         <div class ="form-group">
+                        <?php 
+                            if (isset($_GET['error'])) { ?>
+                                <p style= "color:red;" ><?php echo $_GET['error']; ?></p>
+                        <?php } ?>
                             <p style="color:red;" id="error_reg" ></p>
                         </div>
                         <!-- Text name-->
