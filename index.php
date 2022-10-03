@@ -26,9 +26,9 @@
 <script>
         function validate() {
             var email =
-                document.forms.RegForm.email.value;
+                document.forms.LoginForm.email.value;
             var password =
-                document.forms.RegForm.password.value;
+                document.forms.LoginForm.password.value;
             var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; //Javascript reGex for Email Validation.
 
             if (email == "" ) {
@@ -74,7 +74,7 @@
                 <p style="color:red;" id="error_para" ></p>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal"  action= "login.php" name="RegForm" onsubmit="return validate()" method="post">        
+                <form class="form-horizontal"  action= "login.php" name="LoginForm" onsubmit="return validate()" method="post">        
                     <fieldset>
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="email"></label>  
