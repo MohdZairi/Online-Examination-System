@@ -158,8 +158,7 @@ else
 		<h4 style="font-family:'typo' ">mohdzairi658@gmail.com</h4>
 		<h4 style="font-family:'typo' ">Technical University of Melaka</h4></div></div>
 		</p>
-      </div>
-    
+      </div>   
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
