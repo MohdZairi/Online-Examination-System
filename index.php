@@ -142,8 +142,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title title1"><span style="color:orange">Log In</span></h4>
                 <?php 
-                    if (isset($_GET['error'])) { ?>
-						<p style= "color:red;" ><?php echo $_GET['error']; ?></p>
+                    if (isset($_GET['errorlogin'])) { ?>
+						<p style= "color:red;" ><?php echo $_GET['errorlogin']; ?></p>
 				<?php } ?>
                 <p style="color:red;" id="error_para" ></p>
             </div>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once 'dbConnection.php';
 
     if(isset($_POST['login_form']))
@@ -18,21 +18,25 @@ include_once 'dbConnection.php';
         if($count == 1)
         {
             $row = mysqli_fetch_array($result);
-            $_SESSION["name"]=$row['name'];
-            $_SESSION["email"]=$row['email'];
-            $_SESSION["login"]= true;
+            $_SESSION['name']=$row['name'];
+            $_SESSION['email']=$row['email'];
+            
 
             if($row['privilege']=='user')
             {
-                header("location:account.php");
+                header("location:account.php?q=1");
             }
             else
             {
-                
-                header("location:dash.php");
+                $_SESSION['login']= true;
+                header("location:dash.php?errorlogin=Username Or Password Wrong.");
                 exit();
             }
 
+        }
+        else
+        {
+            header("location:index.php");
         }
     }
     
